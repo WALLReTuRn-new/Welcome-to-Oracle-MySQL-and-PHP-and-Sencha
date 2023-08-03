@@ -19,7 +19,16 @@ The Oracle adapter is already implemented and ready to use. Here's how you can c
 
 // Initialize the Oracle adapter
 //Need Add in config.php
-$oracleAdapter = new OracleAdapter('hostname', 'username', 'password', 'database_name');
+// DB OCI
+define('DB_DRIVER', 'oci');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', '');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'localhost:1521/XE');
+define('DB_PORT', '3306');
+define('DB_PREFIX', '');
+
+
 
 // Perform a sample query
 $result = $this->db->query('SELECT * FROM table_name');
@@ -30,7 +39,14 @@ The functions for MySQL are ready, and you can use them to perform operations on
 
 // Initialize the MySQL adapter
 //Need Add in config.php
-$mysqlAdapter = new MySQLAdapter('hostname', 'username', 'password', 'database_name');
+// DB MYSQL
+define('DB_DRIVER', 'mysqli');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'dk4b69');
+define('DB_DATABASE', 'basicsencha');
+define('DB_PORT', '3306');
+define('DB_PREFIX', '');
 
 // Perform a sample query
 $result = $this->db->>query('SELECT * FROM table_name');
