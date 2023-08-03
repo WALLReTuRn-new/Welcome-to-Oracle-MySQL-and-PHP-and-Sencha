@@ -1,0 +1,74 @@
+{{header}}
+<div class="container">
+	<div id="createTable" class="content"></div>
+	
+</div>
+{{footer}}
+<script type="text/javascript">
+
+Ext.create('Ext.form.Panel', {
+    title: 'User Form',
+    id: 'MyFormPanel',
+    renderTo: createTable,
+    width: 1200,
+    height: 500,
+    bodyPadding: 10,
+    defaultType: 'textfield',
+
+    items: [
+        {
+            fieldLabel: 'First Name',
+            name: 'firstName'
+        },
+        {
+            fieldLabel: 'Email',
+            name: 'email'
+        },
+        {
+            fieldLabel: 'Phone',
+            name: 'phone'
+        },
+    ],
+
+    buttons: [
+        {
+            text: 'Submit',
+            handler: function () {
+                var form = this.up('form'); // get the form panel
+                if (form.isValid()) { // make sure the form contains valid data before submitting
+                Ext.Ajax.request({
+                    url: 'http://localhost/example/index.php?route=operation/insert|addUser',
+                    method: 'POST',
+                    params: form.getValues(),
+                    data: form.getValues(),
+                    datatype: 'json',
+                    success: function (response, opts) {
+                        
+                        var obj = Ext.decode(response.responseText); // THIS IS A REAL HTML FORM
+                        
+
+                       if(obj.success){
+                        Ext.Msg.alert('Form submitted successfully!');
+                       }else{
+                        Ext.Msg.alert('Have Error!');
+                       }
+                        
+
+                    },
+                    failure: function (response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
+                    }
+                });
+                } else { // display error alert if the data is invalid
+                    Ext.Msg.alert('Invalid Data', 'Please correct form errors.')
+                }
+            }
+        }
+    ]
+});
+
+$(document).on('click','#button-1010',function(){
+window.location.replace('http://localhost/example/index.php?route=common/home');
+});
+
+</script>

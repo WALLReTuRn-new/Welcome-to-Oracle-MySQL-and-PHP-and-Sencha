@@ -1,0 +1,79 @@
+{{header}}
+<div class="container">
+<div id="myContainer"></div>
+</div>
+{{footer}}
+<script type="text/javascript">
+
+Ext.define('User', {
+    extend: 'Ext.data.Model',
+    fields: ['table', 'tableHref']
+});
+var userStore = Ext.create('Ext.data.Store', {
+    model: 'User',
+    autoLoad: true,
+    pageSize: 100,
+    proxy: {
+        type: 'ajax',
+        url: 'http://localhost/example/index.php?route=operation/droptable|getTable',
+        reader: {
+            type: 'json',
+            rootProperty: 'tables',
+            //totalProperty: 'total'
+        }
+    }
+});
+Ext.create('Ext.grid.Panel', {
+    renderTo: myContainer,
+    store: userStore,
+    width: 1200,
+    height: 500,
+    title: 'All Tables ',
+    columns: [
+        {
+            text: 'Table Name',
+            width: 250,
+            sortable: true,
+            hideable: true,
+            dataIndex: 'table'
+        },
+        {
+            text: 'Delete Table',
+            width: 350,
+            dataIndex: 'tableHref',
+            hidden: false
+        }
+    ]
+});
+
+$(document).on('click','.dropTable',function () {
+    
+    var url = $(this).attr('data-drop');
+
+    
+    $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        success: function (json) {
+
+            console.log(json);
+
+            if(json.success){
+                location.reload();
+            }
+            //$('body').append(html);
+
+          //  $.each(json.table, function (i, item) {
+              //  console.log(item); 
+                //htmlUrl += ' <a href="' + item.tableHref + '">' + item.table + '</a> |';
+            //     htmlUrl += ' <a href="#">' + item.table + '</a> |';
+           // });
+           // $('#MyFormPanel_header-title-textEl').append(htmlUrl);
+
+        }
+    });
+});
+
+
+</script>

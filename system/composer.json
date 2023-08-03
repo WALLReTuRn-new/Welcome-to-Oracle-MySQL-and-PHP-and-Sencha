@@ -1,0 +1,31 @@
+{
+    "name": "websitetoyou/websitetoyou",
+    "description": "",
+    "type": "project",
+    "keywords": [
+        "marketplace",
+        "ecommerce",
+        "framework",
+        "opensource"
+    ],
+    "homepage": "https://websitetoyou.cz",
+    "license": "MIT",
+    "support": {
+        "email": "info@websitetoyou.cz",
+        "issues": "https://websitetoyou.cz/websitetoyou/websitetoyou/issues",
+        "forum": "https://websitetoyou.cz",
+        "wiki": "https://websitetoyou.cz/websitetoyou/websitetoyou/wiki",
+        "source": "https://websitetoyou.cz/websitetoyou/websitetoyou/source",
+        "docs": "https://websitetoyou.cz/websitetoyou/websitetoyou/docs"
+    },
+    "config": {
+        "vendor-dir": "vendor/"
+    },
+    "require": {
+        "php": ">=8.0.0",
+        "twig/twig": "^2.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.9"
+    }
+}
