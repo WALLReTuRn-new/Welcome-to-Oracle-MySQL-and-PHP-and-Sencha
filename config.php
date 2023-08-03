@@ -13,8 +13,8 @@ define('DIR_CACHE', DIR_STORAGE . 'cache/');
 // DB OCI
 //define('DB_DRIVER', 'oci');
 //define('DB_HOSTNAME', 'localhost');
-//define('DB_USERNAME', 'wallreturn');
-//define('DB_PASSWORD', '123456');
+//define('DB_USERNAME', '');
+//define('DB_PASSWORD', '');
 //define('DB_DATABASE', 'localhost:1521/XE');
 //define('DB_PORT', '3306');
 //define('DB_PREFIX', '');
