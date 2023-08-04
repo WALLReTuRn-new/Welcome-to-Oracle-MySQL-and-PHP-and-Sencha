@@ -66,6 +66,6 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For any further questions or inquiries, feel free to contact us at example@example.com.
+For any further questions or inquiries, feel free to contact us at wallreturn@gmail.com.
 
 Thank you for using our Oracle and MySQL Adapter for PHP and Sencha! We hope it simplifies your database interactions and improves your overall development experience. Happy coding!
