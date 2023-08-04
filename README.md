@@ -17,8 +17,8 @@ Oracle Usage
 The Oracle adapter is already implemented and ready to use. Here's how you can connect to the Oracle database and perform basic operations:
 
 
-// Initialize the Oracle adapter
-//Need Add in config.php
+// Initialize the Oracle adapter<br />
+//Need Add in config.php<br />
 // DB OCI
 define('DB_DRIVER', 'oci');
 define('DB_HOSTNAME', 'localhost');
