@@ -51,6 +51,12 @@ define('DB_PREFIX', '');<br />
 // Perform a sample query
 $result = $this->db->>query('SELECT * FROM table_name');
 
+
+![Screenshot](images/screenshot.png)
+
+
+
+
 Contribution Guidelines
 If you would like to contribute to this project, follow these steps:
 
