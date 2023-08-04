@@ -20,33 +20,33 @@ The Oracle adapter is already implemented and ready to use. Here's how you can c
 // Initialize the Oracle adapter<br />
 //Need Add in config.php<br />
 // DB OCI
-define('DB_DRIVER', 'oci');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', '');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'localhost:1521/XE');
-define('DB_PORT', '3306');
-define('DB_PREFIX', '');
+define('DB_DRIVER', 'oci');<br />
+define('DB_HOSTNAME', 'localhost');<br />
+define('DB_USERNAME', '');<br />
+define('DB_PASSWORD', '');<br />
+define('DB_DATABASE', 'localhost:1521/XE');<br />
+define('DB_PORT', '3306');<br />
+define('DB_PREFIX', '');<br />
 
 
 
-// Perform a sample query
+// Perform a sample query<br />
 $result = $this->db->query('SELECT * FROM table_name');
 
 MySQL Usage
 The functions for MySQL are ready, and you can use them to perform operations on the MySQL database. Here's how you can connect to the MySQL database and perform basic operations:
 
 
-// Initialize the MySQL adapter
-//Need Add in config.php
-// DB MYSQL
-define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'basicsencha');
-define('DB_PORT', '3306');
-define('DB_PREFIX', '');
+// Initialize the MySQL adapter<br />
+//Need Add in config.php<br />
+// DB MYSQL<br />
+define('DB_DRIVER', 'mysqli');<br />
+define('DB_HOSTNAME', 'localhost');<br />
+define('DB_USERNAME', 'root');<br />
+define('DB_PASSWORD', '');<br />
+define('DB_DATABASE', 'basicsencha');<br />
+define('DB_PORT', '3306');<br />
+define('DB_PREFIX', '');<br />
 
 // Perform a sample query
 $result = $this->db->>query('SELECT * FROM table_name');
