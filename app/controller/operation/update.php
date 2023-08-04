@@ -40,7 +40,7 @@ class Update extends \WebSiteToYou\System\Library\Controller
         
       
        if(!$json){
-        $this->db->query("UPDATE `users` SET `user_name` = '".$this->db->escape((string)$name)."',`user_email` = '".$this->db->escape((string)$email)."',`user_phone` = '".$this->db->escape((string)$phone)."',`user_lastedit` = '' WHERE `user_id` = '".$this->db->escape((int)$id)."'");
+        $this->db->query("UPDATE `users` SET `user_name` = '".$this->db->escape((string)$name)."',`user_email` = '".$this->db->escape((string)$email)."',`user_phone` = '".$this->db->escape((string)$phone)."',`user_lastedit` = NOW() WHERE `user_id` = '".$this->db->escape((int)$id)."'");
        
         $json['success'] = true;
        }
