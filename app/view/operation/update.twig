@@ -1,0 +1,141 @@
+{{header}}
+<div class="container">
+
+<div class="alert" role="alert">
+  <h4 class="alert-heading"></h4>
+  <p></p>
+  <hr>
+</div>
+
+<div id="myContainer"></div>
+</div>
+{{footer}}
+<script type="text/javascript">
+
+Ext.define('User', {
+    extend: 'Ext.data.Model',
+    fields: ['name', 'email','phone']
+});
+var userStore = Ext.create('Ext.data.Store', {
+    model: 'User',
+    autoLoad: true,
+    pageSize: 100,
+    proxy: {
+        type: 'ajax',
+        url: 'http://localhost/example/index.php?route=operation/update|getUsers',
+        reader: {
+            type: 'json',
+            rootProperty: 'users',
+            totalProperty: 'total'
+        }
+    }
+});
+Ext.create('Ext.grid.Panel', {
+    renderTo: myContainer,
+    store: userStore,
+    width: 1200,
+    height: 500,
+    title: 'All Users ',
+    columns: [
+        {
+            text: 'User Name',
+            flex: 1,
+            sortable: true,
+            hideable: true,
+            dataIndex: 'name',
+            editor: 'textfield'
+        },{
+            text: 'User Email',
+            flex: 1,
+            dataIndex: 'email',
+            hidden: false,
+            editor: 'textfield'
+        },{
+            text: 'User Phone',
+            flex: 1,
+            dataIndex: 'phone',
+            hidden: false,
+            editor: 'textfield'
+        }
+    ],
+    selType: 'cellmodel',
+    plugins: [
+        Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit: 1,
+            listeners : {
+            scope: this,
+            edit: function(editor, e) {
+                    //console.log("Edited id value : " + e.record.get('name'));
+                    Ext.Ajax.request({
+                          url: 'http://localhost/example/index.php?route=operation/update|updateUser',
+                          method: 'POST',
+                            params: {
+                             id: e.record.get('id'),
+                             name: e.record.get('name'),
+                             email: e.record.get('email'),
+                             phone: e.record.get('phone')
+                              },
+                              dataType: 'json',
+                              contentType: 'application/x-www-form-urlencoded',
+                              success: function(json){
+                              var json = JSON.parse(json.responseText);
+                        // process server response here
+                        console.log(json);
+
+                        if(json.error){
+                           $('.alert').removeClass('alert-success'); 
+                           $('.alert').addClass('alert-danger');
+                           $('.alert .alert-heading').html('Have Error!');
+                           $('.alert p').html('Email Adres Exist please change it!');
+
+                        }
+                        if(json.success){
+                            $('.alert').removeClass('alert-danger'); 
+                           $('.alert').addClass('alert-success');
+                           $('.alert .alert-heading').html('Well done!');
+                           $('.alert p').html('User Update');
+                        }
+                           
+
+
+                           
+
+                          }
+                    });
+                }
+    }
+        })
+    ],
+});
+
+$(document).on('click','.updateUser',function () {
+    
+    var url = $(this).attr('data-update');
+
+    
+    $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        success: function (json) {
+
+            console.log(json);
+
+            if(json.success){
+                location.reload();
+            }
+            //$('body').append(html);
+
+          //  $.each(json.table, function (i, item) {
+              //  console.log(item); 
+                //htmlUrl += ' <a href="' + item.tableHref + '">' + item.table + '</a> |';
+            //     htmlUrl += ' <a href="#">' + item.table + '</a> |';
+           // });
+           // $('#MyFormPanel_header-title-textEl').append(htmlUrl);
+
+        }
+    });
+});
+
+
+</script>
