@@ -52,7 +52,14 @@ define('DB_PREFIX', '');<br />
 $result = $this->db->>query('SELECT * FROM table_name');
 
 
-![Screenshot](images/screenshot.png)
+![Screenshot](images/DATA.png)
+![Screenshot](images/CREATETABLE.png)
+![Screenshot](images/DROPTABLE.png)
+![Screenshot](images/INSERT.png)
+![Screenshot](images/DELETE.png)
+![Screenshot](images/UPDATE.png)
+![Screenshot](images/UPDATE-2.png)
+![Screenshot](images/UPDATE-3.png)
 
 
 
